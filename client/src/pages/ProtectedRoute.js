@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children }) => {
   const { user, userLoading } = useAppContext()
 
   if (userLoading){
-    return <Loading />   //when we are using COOKIES to store user, location and token values we have to initialize it before checking user...if we haven't return it, when we will reload the page -then every time we get redirected to landing page
+    return <Loading className='center'/>   //when we are using COOKIES to store user, location and token values we have to initialize it before checking user...if we haven't return it, when we will reload the page -then every time we get redirected to landing page
   }
     
 
