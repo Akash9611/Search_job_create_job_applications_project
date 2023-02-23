@@ -9,7 +9,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 //*use only when ready to deploy
-//!1]build Production Ready Application
+//!1]build Production Ready Application 
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import path from 'path';
@@ -40,7 +40,7 @@ if (process.env.NODE_ENV !== "production") {
     app.use(morgan('dev'))
 }
 
-//*use only when ready to deploy
+//*use only when application is ready to deploy
 //!build Production Ready Application
 app.use(express.static(path.resolve(__dirname, './client/build')))
 
