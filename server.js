@@ -17,8 +17,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url)); //crating __dirname t
 
 //!2]Server Security
 import helmet from 'helmet';
-import xss from 'xss-clean'
-import mongoSanitize from 'express-mongo-sanitize'
+import xss from 'xss-clean';
+import mongoSanitize from 'express-mongo-sanitize';
 
 //!Cookie for token authorization
 import cookieParser from 'cookie-parser';
@@ -40,7 +40,7 @@ if (process.env.NODE_ENV !== "production") {
     app.use(morgan('dev'))
 }
 
-//*use only when application is ready to deploy
+//*use only when ready to deploy
 //!build Production Ready Application
 app.use(express.static(path.resolve(__dirname, './client/build')))
 
@@ -68,9 +68,12 @@ app.use('/api/v1/job', authenticateUser, jobRoutes)
 
 //* use only when ready to deploy
 //!build Production Ready Application 
-app.get('*', (req, res) => {
+/*app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, './client/build', 'index.html')) //When all the defined routes on upperSide-> calls the get route, We will send it to frontEnd client->build->index.html folder ...where we have react router ...And react router do their job, to fetch and run frontEnd
-})
+})*/
+app.get('*', function (request, response) {
+    response.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
+  });
 
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
